@@ -1,0 +1,9 @@
+missingIncludeSystem
+variableScope
+missingInclude
+syntaxError
+unusedFunction
+unusedStructMember
+cstyleCast
+ctuOneDefinitionRuleViolation
+unreadVariable

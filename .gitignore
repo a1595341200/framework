@@ -1,0 +1,12 @@
+build/*
+cmake-build-debug-linux/*
+cmake-build-debug/*
+log
+report
+coverage_report/*
+submodule/build_install/*
+build_install
+framework/build/*
+gmon.out
+imgui.ini
+submodule/*
