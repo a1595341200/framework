@@ -1,3 +1,4 @@
+find_package(GTest CONFIG REQUIRED)
 macro(BUILD curdir)
     file(GLOB children ${curdir}/*.cpp)
     message("Building ${children}")
@@ -6,6 +7,8 @@ macro(BUILD curdir)
     add_executable(${FILENAME} ${child})
     target_link_libraries(${FILENAME} 
         ${PROJECT_N}
+        GTest::gtest
+        GTest::gmock
     )
     add_test(NAME ${FILENAME} COMMAND ${FILENAME})
     endforeach()

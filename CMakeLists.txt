@@ -29,14 +29,14 @@ target_include_directories(
                         $<INSTALL_INTERFACE:include/${PROJECT_N}>
 )
 
-option(BUILD_TESTS "Build Tests" OFF)
+option(BUILD_TESTS "Build Tests" ON)
 
-# if(BUILD_TESTS)
+if(BUILD_TESTS)
 include(CTest)
 enable_testing()
 add_subdirectory(tests)
 
-# endif()
+endif()
 install(
     TARGETS ${PROJECT_N}
     EXPORT ${PROJECT_N}
