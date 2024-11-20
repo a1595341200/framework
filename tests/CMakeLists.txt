@@ -1,4 +1,7 @@
 find_package(GTest CONFIG REQUIRED)
+find_package(PkgConfig REQUIRED)
+pkg_check_modules(GLOG REQUIRED libglog)
+
 macro(BUILD curdir)
     file(GLOB children ${curdir}/*.cpp)
     message("Building ${children}")
@@ -9,6 +12,7 @@ macro(BUILD curdir)
         ${PROJECT_N}
         GTest::gtest
         GTest::gmock
+        ${GLOG_LIBRARIES}
     )
     add_test(NAME ${FILENAME} COMMAND ${FILENAME})
     endforeach()
