@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.15)
+cmake_minimum_required(VERSION 3.6)
 set(PROJECT_N framework)
 project(${PROJECT_N} LANGUAGES CXX)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
