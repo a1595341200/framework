@@ -8,6 +8,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
 
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(GLOG REQUIRED libglog)
+pkg_check_modules(GFLAGS REQUIRED gflags)
 
 # include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/config.cmake)
 # add_compilation_options_check()
@@ -30,6 +31,11 @@ add_library(${PROJECT_N} SHARED ${root_header_files} ${root_src_files})
 target_include_directories(
     ${PROJECT_N} PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
                         $<INSTALL_INTERFACE:include/${PROJECT_N}>
+)
+
+include_directories(
+    ${GLOG_INCLUDE_DIRS}
+    ${GFLAGS_INCLUDE_DIRS}
 )
 
 target_link_libraries(${PROJECT_N} PRIVATE 

@@ -9,6 +9,12 @@ pkg_check_modules(GMOCK REQUIRED IMPORTED_TARGET gmock)
 message("GLOG: ${GLOG_LIBRARIES}")
 message("GTEST: ${GTEST_LIBRARIES}")
 
+include_directories(
+    ${GLOG_INCLUDE_DIRS}
+    ${GTEST_INCLUDE_DIRS}
+    ${GMOCK_INCLUDE_DIRS}
+)
+
 macro(BUILD curdir)
     file(GLOB children ${curdir}/*.cpp)
     message("Building ${children}")
