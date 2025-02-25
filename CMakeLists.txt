@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.6)
+cmake_minimum_required(VERSION 3.10)
 set(PROJECT_N framework)
 project(${PROJECT_N} LANGUAGES CXX)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
@@ -7,7 +7,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
 
 find_package(PkgConfig REQUIRED)
-pkg_check_modules(GLOG REQUIRED libglog)
+find_package(glog REQUIRED)
 pkg_check_modules(GFLAGS REQUIRED gflags)
 
 # include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/config.cmake)
@@ -39,7 +39,7 @@ include_directories(
 )
 
 target_link_libraries(${PROJECT_N} PRIVATE 
-    ${GLOG_LIBRARIES}
+    glog::glog
 )
 
 option(BUILD_TESTS "Build Tests" ON)

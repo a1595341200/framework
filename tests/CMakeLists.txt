@@ -3,14 +3,16 @@
 find_package(PkgConfig REQUIRED)
 
 pkg_check_modules(GLOG REQUIRED IMPORTED_TARGET libglog)
-pkg_check_modules(GTEST REQUIRED IMPORTED_TARGET gtest)
-pkg_check_modules(GMOCK REQUIRED IMPORTED_TARGET gmock)
+# pkg_check_modules(GTEST REQUIRED IMPORTED_TARGET gtest)
+# pkg_check_modules(GMOCK REQUIRED IMPORTED_TARGET gmock)
+
+find_package(GTest REQUIRED)
 
 message("GLOG: ${GLOG_LIBRARIES}")
 message("GTEST: ${GTEST_LIBRARIES}")
 
 include_directories(
-    ${GLOG_INCLUDE_DIRS}
+    glog::glog
     ${GTEST_INCLUDE_DIRS}
     ${GMOCK_INCLUDE_DIRS}
 )
@@ -28,9 +30,9 @@ macro(BUILD curdir)
         # PkgConfig::GLOG
         # PkgConfig::GTEST
         # PkgConfig::GMOCK
-        ${GLOG_LIBRARIES}
-        ${GMOCK_LIBRARIES}
-        ${GTEST_LIBRARIES}
+        glog::glog
+        GTest::gmock
+        GTest::gtest
     )
     add_test(NAME ${FILENAME} COMMAND ${FILENAME})
     endforeach()
